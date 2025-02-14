@@ -5,6 +5,7 @@ Tools for modifying commit metadata in Git repositories.
 
 - Changing the commit author (name and email)
 - Changing the commit date
+- Can automatically push changes
 
 ## Requirements
 
@@ -27,5 +28,5 @@ alias gitt="/path/to/gitt.py"
 
 ## Usage
 ```bash
-./gitt.py <commit_hash> [--author "Firstname Lastname <email>"] [--date "DD.MM.YYYY HH:MM:SS"]
+./gitt.py <commit_hash> [--author "Firstname Lastname <email>"] [--date "DD.MM.YYYY HH:MM:SS"] [--push]
 ```

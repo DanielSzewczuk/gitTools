@@ -25,14 +25,16 @@ def change_commit_info(commit_hash, new_author=None, new_date=None):
             f'export GIT_AUTHOR_NAME="{author_name}"',
             f'export GIT_AUTHOR_EMAIL="{author_email}"',
             f'export GIT_COMMITTER_NAME="{author_name}"',
-            f'export GIT_COMMITTER_EMAIL="{author_email}"'
+            f'export GIT_COMMITTER_EMAIL="{author_email}"',
+            f'export FILTER_BRANCH_SQUELCH_WARNING=1'
         ])
     
     if new_date:
         formatted_date = validate_date(new_date)
         env_filter_commands.extend([
             f'export GIT_AUTHOR_DATE="{formatted_date}"',
-            f'export GIT_COMMITTER_DATE="{formatted_date}"'
+            f'export GIT_COMMITTER_DATE="{formatted_date}"',
+            f'export FILTER_BRANCH_SQUELCH_WARNING=1'
         ])
     
     env_filter_cmd = f'if [ $GIT_COMMIT = {commit_hash} ]; then {" ; ".join(env_filter_commands)} ; fi'

@@ -42,9 +42,9 @@ def change_commit_info(commit_hash, new_author=None, new_date=None):
             ["git", "filter-branch", "-f", "--env-filter", env_filter_cmd],
             check=True
         )
-        print(f"Pomyślnie zmodyfikowano commit {commit_hash}")
+        print(f"Commit updated! {commit_hash}")
     except subprocess.CalledProcessError as e:
-        print(f"Błąd podczas modyfikacji commita: {e}")
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Changing commit metadata in Git.')
@@ -62,4 +62,4 @@ if __name__ == "__main__":
             args.author = validate_author(args.author)
         change_commit_info(args.commit_hash, args.author, args.date)
     except ValueError as e:
-        print(f"Błąd: {e}")
+        print(f"Error: {e}")

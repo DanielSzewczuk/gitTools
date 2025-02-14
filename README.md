@@ -27,5 +27,5 @@ alias gitt="/path/to/gitt.py"
 
 ## Usage
 ```bash
-./gitt.py <commit_hash> [--author "Firstname Lastname <email>"] [--date "DD.MM.YYYY HH:MM:SS"]
+./gitt.py <commit_hash> [--author "Firstname Lastname <email>"] [--date "DD.MM.YYYY HH:MM:SS"] [--push]
 ```

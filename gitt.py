@@ -43,6 +43,9 @@ def change_commit_info(commit_hash, new_author=None, new_date=None):
             check=True
         )
         print(f"Commit updated! {commit_hash}")
+        if args.push:
+            subprocess.run(["git", "push", "--force"], check=True)
+            print("Changes pushed to the remote repository.")
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
 
@@ -51,12 +54,12 @@ if __name__ == "__main__":
     parser.add_argument('commit_hash', help='The commit hash to modify.')
     parser.add_argument('--author', help='Firstname Lastname <email>')
     parser.add_argument('--date', help='New date in the format "DD.MM.YYYY HH:MM:SS"')
-    
+    parser.add_argument('--push', action='store_true', help='Push changes to the remote repository.')
     args = parser.parse_args()
     
     if not args.author and not args.date:
         parser.error("You must specify at least one option (–author or –date).")
-    
+
     try:
         if args.author:
             args.author = validate_author(args.author)
